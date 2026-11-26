@@ -14,11 +14,11 @@ baseURL = 'https://books.toscrape.com/catalogue/page-'
 livros = []
 dataHoje = datetime.date.today().strftime('%d-%m-%Y')
 agora = datetime.datetime.now()
-paginaLimite = 3
-cardTemp_min = 1
-cardTemp_max = 3
-pagTemp_min = 2 
-pagTemp_max = 4
+paginaLimite = 2
+cardTemp_min = 0.1
+cardTemp_max = 0.1
+pagTemp_min = 0.1
+pagTemp_max = 0.1
 bancoDeDados = 'banco_filmes.db'
 saidaCSV = f'livros_{dataHoje}.csv'
 
@@ -100,13 +100,13 @@ for livro in livros :
             INSERT INTO livros (titulo, preco, estoque)
             VALUES (?, ?, ?)
         ''',    ( 
-                livro['titulo'],
-                livro['preco'],
-                livro['estoque']
+                livro['Titulo'], 
+                livro['Preco'], 
+                livro['Estoque']
                 )
         )
     except Exception as e:
-        print(f'Erro {e} ao inserir o livro: {livro['titulo']}')
+        print(f'Erro {e} ao inserir o livro: {livro['Titulo']}')
 
 
 #==========================================================================================
